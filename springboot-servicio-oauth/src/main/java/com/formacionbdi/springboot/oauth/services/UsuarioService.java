@@ -17,6 +17,8 @@ import org.springframework.stereotype.Service;
 import com.formacionbdi.springboot.oauth.clients.UsuarioFeignClient;
 import com.formacionbdi.springboot.oauth.models.entity.Usuario;
 
+import brave.Tracer;
+
 @Service
 public class UsuarioService implements IUsuarioService, UserDetailsService{
 
@@ -24,6 +26,9 @@ public class UsuarioService implements IUsuarioService, UserDetailsService{
 	
 	@Autowired
 	private UsuarioFeignClient client;
+	
+	@Autowired
+	private Tracer tracer;
 	
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
